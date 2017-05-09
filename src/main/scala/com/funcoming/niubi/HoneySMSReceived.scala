@@ -27,7 +27,7 @@ object HoneySMSReceived {
     //          phonePlatform = result.group("phonePlatform")
     //        }
     //    println(line)
-    //    val new_line = line.replaceAll("""[|]""","""""")
+    //    val new_line = line.replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     //    println(new_line)
     //
     //    //-------------------------------
@@ -55,105 +55,105 @@ object HoneySMSReceived {
     var uuid = """\N"""
     if (!uuid_re.findFirstMatchIn(line).isEmpty) {
       val result = uuid_re.findFirstMatchIn(line).get
-      uuid = result.group("uuid").replaceAll("""[|]""","""""")
+      uuid = result.group("uuid").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val number_re = new Regex(""""number":"(.*?)"""", "number")
     var number = """\N"""
     if (!number_re.findFirstMatchIn(line).isEmpty) {
       val result = number_re.findFirstMatchIn(line).get
-      number = result.group("number").replaceAll("""[|]""","""""")
+      number = result.group("number").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val content_re = new Regex(""""content":"(.*?)"""", "content")
     var content = """\N"""
     if (!content_re.findFirstMatchIn(line).isEmpty) {
       val result = content_re.findFirstMatchIn(line).get
-      content = result.group("content").replaceAll("""[|]""","""""")
+      content = result.group("content").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val rimsi_re = new Regex(""""number":".*?","imsi":"(.*?)"""", "rimsi")
     var rimsi = """\N"""
     if (!rimsi_re.findFirstMatchIn(line).isEmpty) {
       val result = rimsi_re.findFirstMatchIn(line).get
-      rimsi = result.group("rimsi").replaceAll("""[|]""","""""")
+      rimsi = result.group("rimsi").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val imsi_re = new Regex(""""androidOs":".*?","imsi":"(.*?)"""", "imsi")
     var imsi = """\N"""
     if (!imsi_re.findFirstMatchIn(line).isEmpty) {
       val result = imsi_re.findFirstMatchIn(line).get
-      imsi = result.group("imsi").replaceAll("""[|]""","""""")
+      imsi = result.group("imsi").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val imsi1_re = new Regex(""""imsi1":"(.*?)"""", "imsi1")
     var imsi1 = """\N"""
     if (!imsi1_re.findFirstMatchIn(line).isEmpty) {
       val result = imsi1_re.findFirstMatchIn(line).get
-      imsi1 = result.group("imsi1").replaceAll("""[|]""","""""")
+      imsi1 = result.group("imsi1").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val imei_re = new Regex(""""e":"(.*?)"""", "imei")
     var imei = """\N"""
     if (!imei_re.findFirstMatchIn(line).isEmpty) {
       val result = imei_re.findFirstMatchIn(line).get
-      imei = result.group("imei").replaceAll("""[|]""","""""")
+      imei = result.group("imei").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val tag_re = new Regex(""""tag":"(.*?)"""", "tag")
     var tag = """\N"""
     if (!tag_re.findFirstMatchIn(line).isEmpty) {
       val result = tag_re.findFirstMatchIn(line).get
-      tag = result.group("tag").replaceAll("""[|]""","""""")
+      tag = result.group("tag").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val sub_tag_re = new Regex(""""sub_tag":"(.*?)"""", "sub_tag")
     var sub_tag = """\N"""
     if (!sub_tag_re.findFirstMatchIn(line).isEmpty) {
       val result = sub_tag_re.findFirstMatchIn(line).get
-      sub_tag = result.group("sub_tag").replaceAll("""[|]""","""""")
+      sub_tag = result.group("sub_tag").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val dm_v_re = new Regex(""""dm_v":"(.*?)"""", "dm_v")
     var dm_v = """\N"""
     if (!dm_v_re.findFirstMatchIn(line).isEmpty) {
       val result = dm_v_re.findFirstMatchIn(line).get
-      dm_v = result.group("dm_v").replaceAll("""[|]""","""""")
+      dm_v = result.group("dm_v").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val sc_re = new Regex(""""sc":"(.*?)"""", "sc")
     var sc = """\N"""
     if (!sc_re.findFirstMatchIn(line).isEmpty) {
       val result = sc_re.findFirstMatchIn(line).get
-      sc = result.group("sc").replaceAll("""[|]""","""""")
+      sc = result.group("sc").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val aid_re = new Regex(""""aid":"(.*?)"""", "aid")
     var aid = """\N"""
     if (!aid_re.findFirstMatchIn(line).isEmpty) {
       val result = aid_re.findFirstMatchIn(line).get
-      aid = result.group("aid").replaceAll("""[|]""","""""")
+      aid = result.group("aid").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val android_sdk_re = new Regex(""""androidSdk":"(.*?)"""", "android_sdk")
     var android_sdk = """\N"""
     if (!android_sdk_re.findFirstMatchIn(line).isEmpty) {
       val result = android_sdk_re.findFirstMatchIn(line).get
-      android_sdk = result.group("android_sdk").replaceAll("""[|]""","""""")
+      android_sdk = result.group("android_sdk").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val loader_version_re = new Regex(""""version":"(.*?)"""", "loader_version")
     var loader_version = """\N"""
     if (!loader_version_re.findFirstMatchIn(line).isEmpty) {
       val result = loader_version_re.findFirstMatchIn(line).get
-      loader_version = result.group("loader_version").replaceAll("""[|]""","""""")
+      loader_version = result.group("loader_version").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val android_os_re = new Regex(""""androidOs":"(.*?)"""", "android_os")
     var android_os = """\N"""
     if (!android_os_re.findFirstMatchIn(line).isEmpty) {
       val result = android_os_re.findFirstMatchIn(line).get
-      android_os = result.group("android_os").replaceAll("""[|]""","""""")
+      android_os = result.group("android_os").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val create_time_re = new Regex(""""timeStamp":(\d*?),""", "create_time")
@@ -161,7 +161,7 @@ object HoneySMSReceived {
     if (!create_time_re.findFirstMatchIn(line).isEmpty) {
       val result = create_time_re.findFirstMatchIn(line).get
       val create_time_tmp = result.group("create_time")
-      create_time = formateTimeStamp(create_time_tmp).replaceAll("""[|]""","""""")
+      create_time = formateTimeStamp(create_time_tmp).replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
       //      println("我是 timestape" + create_time)
     }
 
@@ -170,28 +170,28 @@ object HoneySMSReceived {
     if (!record_time_re.findFirstMatchIn(line).isEmpty) {
       val result = record_time_re.findFirstMatchIn(line).get
       //      println("XX的内容是" + result.group("xx"))
-      record_time = result.group("record_time").replaceAll("""[|]""","""""")
+      record_time = result.group("record_time").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val phoneBrand_re = new Regex(""""phoneBrand":"(.*?)"""", "phoneBrand")
     var phoneBrand = """\N"""
     if (!phoneBrand_re.findFirstMatchIn(line).isEmpty) {
       val result = phoneBrand_re.findFirstMatchIn(line).get
-      phoneBrand = result.group("phoneBrand").replaceAll("""[|]""","""""")
+      phoneBrand = result.group("phoneBrand").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val phoneModel_re = new Regex(""""phoneModel":"(.*?)"""", "phoneModel")
     var phoneModel = """\N"""
     if (!phoneModel_re.findFirstMatchIn(line).isEmpty) {
       val result = phoneModel_re.findFirstMatchIn(line).get
-      phoneModel = result.group("phoneModel").replaceAll("""[|]""","""""")
+      phoneModel = result.group("phoneModel").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
 
     val phonePlatform_re = new Regex(""""phonePlatform":"(.*?)"""", "phonePlatform")
     var phonePlatform = """\N"""
     if (!phonePlatform_re.findFirstMatchIn(line).isEmpty) {
       val result = phonePlatform_re.findFirstMatchIn(line).get
-      phonePlatform = result.group("phonePlatform").replaceAll("""[|]""","""""")
+      phonePlatform = result.group("phonePlatform").replaceAll("""[|]""","""""").replaceAll("""[\\]""","""\\\\""")
     }
     val infinidbstr = uuid + '|' + number + '|' + content + '|' + rimsi + '|' + imsi + '|' + imsi1 + '|' + imei + '|' + tag + '|' + sub_tag + '|' + dm_v + '|' + sc + '|' + aid + '|' + android_sdk + '|' + loader_version + '|' + android_os + '|' + create_time + '|' + record_time + '|' + phoneBrand + '|' + phoneModel + '|' + phonePlatform
     return infinidbstr
