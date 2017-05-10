@@ -1,28 +1,30 @@
 package com.funcoming.lihai;
 
-import org.apache.axis2.AxisFault;
-import org.apache.axis2.addressing.EndpointReference;
-import org.apache.axis2.client.Options;
-import org.apache.axis2.rpc.client.RPCServiceClient;
+import com.tigerjoys.panda.ws.Location;
+import com.tigerjoys.panda.ws.LocationWebService;
+import com.tigerjoys.panda.ws.LocationWebService_Service;
+import com.tigerjoys.panda.ws.ResultWapper;
+
+import javax.xml.namespace.QName;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /**
  * Created by LiuFangGuo on 5/8/17.
  */
 public class MainApp {
     public static void main(String[] args) {
-        System.out.println("操你妈");
-        String wsdl_url = "http://panda.didiman.com:82/Panda/LocationWebService?wsdl";
         try {
-            RPCServiceClient rpcServiceClient = new RPCServiceClient();
-            EndpointReference endpointReference = new EndpointReference(wsdl_url);
-            Options rpcServiceClientOptions = rpcServiceClient.getOptions();
-            System.out.println();
+            URL wsdlUrl = new URL("http://panda.didiman.com:82/Panda/LocationWebService?wsdl");
+            LocationWebService_Service locationWebServiceService = new LocationWebService_Service(wsdlUrl, new QName("http://ws.panda.tigerjoys.com/", "LocationWebService"));
+            LocationWebService locationWebService = locationWebServiceService.getLocationWebServicePort();
+            ResultWapper resultWapper = locationWebService.locate1("", "", "");
+            Location result = (Location) resultWapper.getResult();
+            System.out.println(result.getCities());
 
 
-        } catch (AxisFault axisFault) {
-            axisFault.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         }
-
-
     }
 }
