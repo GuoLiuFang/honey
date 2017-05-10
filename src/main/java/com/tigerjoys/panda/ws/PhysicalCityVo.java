@@ -9,9 +9,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for physicalCityVo complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="physicalCityVo">
  *   &lt;complexContent>
@@ -25,16 +25,19 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "physicalCityVo", propOrder = {
-    "id",
-    "name",
-    "provinceId"
+        "id",
+        "name",
+        "provinceId"
 })
 public class PhysicalCityVo {
+    //    返回三个physical_city_vo_id,physical_city_vo_name,physical_city_vo_province_id
+    @Override
+    public String toString() {
+        return "" + id + "|" + name + "|" + provinceId;
+    }
 
     protected long id;
     protected String name;
@@ -43,7 +46,6 @@ public class PhysicalCityVo {
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public long getId() {
         return id;
@@ -51,7 +53,6 @@ public class PhysicalCityVo {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(long value) {
         this.id = value;
@@ -59,11 +60,9 @@ public class PhysicalCityVo {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -71,11 +70,9 @@ public class PhysicalCityVo {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;
@@ -83,7 +80,6 @@ public class PhysicalCityVo {
 
     /**
      * Gets the value of the provinceId property.
-     * 
      */
     public int getProvinceId() {
         return provinceId;
@@ -91,7 +87,6 @@ public class PhysicalCityVo {
 
     /**
      * Sets the value of the provinceId property.
-     * 
      */
     public void setProvinceId(int value) {
         this.provinceId = value;

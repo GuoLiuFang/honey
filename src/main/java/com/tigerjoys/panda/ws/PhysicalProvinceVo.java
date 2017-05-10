@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for physicalProvinceVo complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="physicalProvinceVo">
  *   &lt;complexContent>
@@ -23,22 +23,24 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "physicalProvinceVo", propOrder = {
-    "id",
-    "name"
+        "id",
+        "name"
 })
 public class PhysicalProvinceVo {
+    //    返回两个physical_province_vo_id,physical_province_vo_name
+    @Override
+    public String toString() {
+        return "" + id + "|" + name;
+    }
 
     protected long id;
     protected String name;
 
     /**
      * Gets the value of the id property.
-     * 
      */
     public long getId() {
         return id;
@@ -46,7 +48,6 @@ public class PhysicalProvinceVo {
 
     /**
      * Sets the value of the id property.
-     * 
      */
     public void setId(long value) {
         this.id = value;
@@ -54,11 +55,9 @@ public class PhysicalProvinceVo {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getName() {
         return name;
@@ -66,11 +65,9 @@ public class PhysicalProvinceVo {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setName(String value) {
         this.name = value;

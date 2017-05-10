@@ -20,7 +20,7 @@ public class MainApp {
             LocationWebService locationWebService = locationWebServiceService.getLocationWebServicePort();
             ResultWapper resultWapper = locationWebService.locate1("", "", "");
             Location result = (Location) resultWapper.getResult();
-            System.out.println(result.getCities());
+            System.out.println(result.toString());
 
 
         } catch (MalformedURLException e) {

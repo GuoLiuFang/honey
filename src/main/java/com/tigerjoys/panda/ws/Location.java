@@ -11,9 +11,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for location complex type.
- * 
+ * <p>
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ * <p>
  * <pre>
  * &lt;complexType name="location">
  *   &lt;complexContent>
@@ -29,18 +29,40 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "location", propOrder = {
-    "cities",
-    "operator",
-    "physicalCities",
-    "physicalProvince",
-    "province"
+        "cities",
+        "operator",
+        "physicalCities",
+        "physicalProvince",
+        "province"
 })
 public class Location {
+    @Override
+    public String toString() {
+        String cities_str = "\\N|\\N|\\N";
+        if (cities != null) {
+            cities_str = cities.get(0).toString();
+        }
+        String operator_str = "\\N|\\N";
+        if (operator != null) {
+            operator_str = operator.toString();
+        }
+        String physicalCities_str = "\\N|\\N|\\N";
+        if (physicalCities != null) {
+            physicalCities_str = physicalCities.get(0).toString();
+        }
+        String physicalProvince_str = "\\N|\\N";
+        if (physicalProvince != null) {
+            physicalProvince_str = physicalProvince.toString();
+        }
+        String province_str = "\\N|\\N";
+        if (province != null) {
+            province_str = province.toString();
+        }
+        return cities_str + "|" + operator_str + "|" + physicalCities_str + "|" + physicalProvince_str + "|" + province_str;
+    }
 
     @XmlElement(nillable = true)
     protected List<CityVo> cities;
@@ -52,25 +74,23 @@ public class Location {
 
     /**
      * Gets the value of the cities property.
-     * 
+     * <p>
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the cities property.
-     * 
+     * <p>
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getCities().add(newItem);
      * </pre>
-     * 
-     * 
+     * <p>
+     * <p>
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link CityVo }
-     * 
-     * 
      */
     public List<CityVo> getCities() {
         if (cities == null) {
@@ -81,11 +101,9 @@ public class Location {
 
     /**
      * Gets the value of the operator property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link OperatorVo }
-     *     
+     *
+     * @return possible object is
+     * {@link OperatorVo }
      */
     public OperatorVo getOperator() {
         return operator;
@@ -93,11 +111,9 @@ public class Location {
 
     /**
      * Sets the value of the operator property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link OperatorVo }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link OperatorVo }
      */
     public void setOperator(OperatorVo value) {
         this.operator = value;
@@ -105,25 +121,23 @@ public class Location {
 
     /**
      * Gets the value of the physicalCities property.
-     * 
+     * <p>
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
      * This is why there is not a <CODE>set</CODE> method for the physicalCities property.
-     * 
+     * <p>
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
      *    getPhysicalCities().add(newItem);
      * </pre>
-     * 
-     * 
+     * <p>
+     * <p>
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link PhysicalCityVo }
-     * 
-     * 
      */
     public List<PhysicalCityVo> getPhysicalCities() {
         if (physicalCities == null) {
@@ -134,11 +148,9 @@ public class Location {
 
     /**
      * Gets the value of the physicalProvince property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link PhysicalProvinceVo }
-     *     
+     *
+     * @return possible object is
+     * {@link PhysicalProvinceVo }
      */
     public PhysicalProvinceVo getPhysicalProvince() {
         return physicalProvince;
@@ -146,11 +158,9 @@ public class Location {
 
     /**
      * Sets the value of the physicalProvince property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link PhysicalProvinceVo }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link PhysicalProvinceVo }
      */
     public void setPhysicalProvince(PhysicalProvinceVo value) {
         this.physicalProvince = value;
@@ -158,11 +168,9 @@ public class Location {
 
     /**
      * Gets the value of the province property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ProvinceVo }
-     *     
+     *
+     * @return possible object is
+     * {@link ProvinceVo }
      */
     public ProvinceVo getProvince() {
         return province;
@@ -170,11 +178,9 @@ public class Location {
 
     /**
      * Sets the value of the province property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ProvinceVo }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link ProvinceVo }
      */
     public void setProvince(ProvinceVo value) {
         this.province = value;
