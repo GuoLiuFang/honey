@@ -5,7 +5,6 @@ import java.sql.DriverManager
 import com.funcoming.lihai.MainApp
 import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.{Accumulator, SparkConf, SparkContext}
-import scala.util.control._
 
 /**
   * Created by LiuFangGuo on 5/8/17.
@@ -15,6 +14,7 @@ object SMSCompletion {
   def main(args: Array[String]): Unit = {
     start(args(0), args(1))
   }
+
 
   def getReferenceMap(): scala.collection.mutable.Map[String, Tuple7[String, Integer, String, String, String, Integer, Integer]] = {
     val driverName = "org.postgresql.Driver"
@@ -36,6 +36,7 @@ object SMSCompletion {
     return referenceTableMap
   }
 
+
   def getBusinessCode(bc: Broadcast[scala.collection.mutable.Map[String, (String, Integer, String, String, String, Integer, Integer)]], content: String): String = {
     if (content == null) {
       return "\\N|\\N|\\N|\\N|\\N|\\N|\\N|\\N"
@@ -52,6 +53,7 @@ object SMSCompletion {
     }
     return "\\N|\\N|\\N|\\N|\\N|\\N|\\N|\\N"
   }
+
 
   def getStatus(businessCode: String, content: String): String = {
     if (businessCode.equals("\\N|\\N|\\N|\\N|\\N|\\N|\\N|\\N")) {
@@ -95,6 +97,7 @@ object SMSCompletion {
     return "\\N"
   }
 
+
   def allTheCompletion(line: String, bc: Broadcast[scala.collection.mutable.Map[String, (String, Integer, String, String, String, Integer, Integer)]], lnc: Accumulator[Long]): String = {
     //    for ((k, v) <- bc.value) printf("这是在Executor中，也就是每个Map中key: %s, value: %s\n", k, v)
     lnc.add(1)
@@ -108,6 +111,7 @@ object SMSCompletion {
     return line + "|" + businessCode + "|" + location + "|" + status
   }
 
+
   def start(inputpath: String, outputpaath: String): Unit = {
     val conf = new SparkConf().setAppName("短信附加信息添加")
     val sparkContext = new SparkContext(conf)
@@ -117,4 +121,6 @@ object SMSCompletion {
     inputlinesRDD.map(line => allTheCompletion(line, bc, lnc)).coalesce(1, true).saveAsTextFile(outputpaath)
     println("一共处理了%d行", lnc.value)
   }
+
+
 }
