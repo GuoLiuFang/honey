@@ -102,15 +102,15 @@ object SMSCompletion {
     //    for ((k, v) <- bc.value) printf("这是在Executor中，也就是每个Map中key: %s, value: %s\n", k, v)
     lnc.add(1)
     val splitArray: Array[String] = line.split("[|]")
-    val sc = splitArray(10)
-    val imsi = splitArray(4)
+    //    val sc = splitArray(10)
+    //    val imsi = splitArray(4)
     val content = splitArray(2)
-    val location = MainApp.getLocation(sc, imsi)
+    //    val location = MainApp.getLocation(sc, imsi)
+    val md5Str = MainApp.getLineMD5(line)
     val businessCode = getBusinessCode(bc, content)
     val status = getStatus(businessCode, content)
-    return line + "|" + businessCode + "|" + location + "|" + status
+    return line + "|" + businessCode + "|" + md5Str + "|" + status
   }
-
 
   def start(inputpath: String, outputpaath: String): Unit = {
     val conf = new SparkConf().setAppName("短信附加信息添加")
