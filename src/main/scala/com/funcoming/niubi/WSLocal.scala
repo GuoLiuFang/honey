@@ -17,10 +17,10 @@ object WSLocal {
     val splitArray: Array[String] = line.split("[|]")
     val sc = splitArray(10)
     val imsi = splitArray(4)
-    val start = System.currentTimeMillis()
+    //    val start = System.currentTimeMillis()
     val location = MainApp.getLocation(sc, imsi)
-    val end = System.currentTimeMillis()
-    println("本次 web service 调用共花费" + (end - start))
+    //    val end = System.currentTimeMillis()
+    //    println("本次 web service 调用共花费" + (end - start))
     val md5Str = MainApp.getLineMD5(line)
     return md5Str + "|" + location
   }
