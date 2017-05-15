@@ -108,12 +108,14 @@ object SMSCompletion {
     //    val location = MainApp.getLocation(sc, imsi)
     val md5Str = MainApp.getLineMD5(line)
     val businessCode = getBusinessCode(bc, content)
+    println("业务码是" + businessCode)
     val status = getStatus(businessCode, content)
     return line + "|" + businessCode + "|" + md5Str + "|" + status
   }
 
   def start(inputpath: String, outputpaath: String): Unit = {
-    val conf = new SparkConf().setAppName("短信附加信息添加")
+//    val conf = new SparkConf().setAppName("短信附加信息添加")
+    val conf = new SparkConf().setAppName("短信附加信息添加").setMaster("local[*]")
     val sparkContext = new SparkContext(conf)
     val bc = sparkContext.broadcast(getReferenceMap())
     val lnc = sparkContext.accumulator(0L, "LineNumberCounter")
