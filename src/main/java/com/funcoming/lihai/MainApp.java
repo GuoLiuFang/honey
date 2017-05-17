@@ -17,17 +17,20 @@ import java.security.NoSuchAlgorithmException;
  */
 public class MainApp {
 
-    public static String getLocation(String sc, String imsi) {
-        try {
-            URL wsdlUrl = new URL("http://panda.didiman.com:82/Panda/LocationWebService?wsdl");
-            LocationWebService_Service locationWebServiceService = new LocationWebService_Service(wsdlUrl, new QName("http://ws.panda.tigerjoys.com/", "LocationWebService"));
-            LocationWebService locationWebService = locationWebServiceService.getLocationWebServicePort();
-            ResultWapper resultWapper = locationWebService.locate1(sc, imsi, "");
-            Location result = (Location) resultWapper.getResult();
-            return result.toString();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-            System.out.println("调用wsdl的web service出错sc=" + sc + "imsi=" + imsi);
+    public static String getLocation(String sc, String imsi, String sms_business_text) {
+        if (!sms_business_text.equals("\\N")) {
+
+            try {
+                URL wsdlUrl = new URL("http://panda.didiman.com:82/Panda/LocationWebService?wsdl");
+                LocationWebService_Service locationWebServiceService = new LocationWebService_Service(wsdlUrl, new QName("http://ws.panda.tigerjoys.com/", "LocationWebService"));
+                LocationWebService locationWebService = locationWebServiceService.getLocationWebServicePort();
+                ResultWapper resultWapper = locationWebService.locate1(sc, imsi, "");
+                Location result = (Location) resultWapper.getResult();
+                return result.toString();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                System.out.println("调用wsdl的web service出错sc=" + sc + "imsi=" + imsi);
+            }
         }
         return "\\N|\\N|\\N|0|null|\\N|\\N|\\N|\\N|\\N|\\N|\\N";
     }
