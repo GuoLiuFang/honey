@@ -103,14 +103,14 @@ object SMSAppendixTemp {
     val splitArray: Array[String] = line.split("[|]")
     //    val sc = splitArray(10)
     //    val imsi = splitArray(4)
-    val content = splitArray(3)
+    val content = splitArray(2)
     //    val location = MainApp.getLocation(sc, imsi)
-    val md5Str = splitArray(29)
+    val md5Str = splitArray(28)
     val businessCode = getBusinessCode(bc, content)
     //    print("业务码是" + businessCode)
     val status = getStatus(businessCode, content)
     //    println("--------" + status)
-    val appendixLine = splitArray(1) + "|" + splitArray(2) + "|" + splitArray(3) + "|" + splitArray(4) + "|" + splitArray(5) + "|" + splitArray(6) + "|" + splitArray(7) + "|" + splitArray(8) + "|" + splitArray(9) + "|" + splitArray(10) + "|" + splitArray(11) + "|" + splitArray(12) + "|" + splitArray(13) + "|" + splitArray(14) + "|" + splitArray(15) + "|" + splitArray(16) + "|" + splitArray(17) + "|" + splitArray(18) + "|" + splitArray(19) + "|" + splitArray(20)
+    val appendixLine = splitArray(0) + "|" + splitArray(1) + "|" + splitArray(2) + "|" + splitArray(3) + "|" + splitArray(4) + "|" + splitArray(5) + "|" + splitArray(6) + "|" + splitArray(7) + "|" + splitArray(8) + "|" + splitArray(9) + "|" + splitArray(10) + "|" + splitArray(11) + "|" + splitArray(12) + "|" + splitArray(13) + "|" + splitArray(14) + "|" + splitArray(15) + "|" + splitArray(16) + "|" + splitArray(17) + "|" + splitArray(18) + "|" + splitArray(19)
     return appendixLine + "|" + businessCode + "|" + md5Str + "|" + status
   }
 
