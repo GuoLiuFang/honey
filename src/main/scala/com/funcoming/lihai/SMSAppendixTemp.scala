@@ -15,7 +15,7 @@ object SMSAppendixTemp {
   }
 
 
-  def getReferenceMap(): scala.collection.mutable.Map[String, Tuple7[String, Integer, String, String, String, Integer, Integer]] = {
+  def getReferenceMap(): Map[String, (String, Integer, String, String, String, Integer, Integer)] = {
     val driverName = "org.postgresql.Driver"
     val connectionUrl = "jdbc:postgresql://192.168.12.14:5432/tjdw"
     val username = "tj_root"
@@ -31,12 +31,13 @@ object SMSAppendixTemp {
         referenceTableMap(resultSetInstance.getString("sms_business_text")) = Tuple7(resultSetInstance.getString("charge_code_name"), resultSetInstance.getInt("price"), resultSetInstance.getString("dest_number_code"), resultSetInstance.getString("dest_number"), resultSetInstance.getString("service_provider_name"), resultSetInstance.getInt("service_provider_id"), resultSetInstance.getInt("charge_code_id"))
       }
     }
-    //    for ((k, v) <- referenceTableMap) printf("这是在主函数中key: %s, value: %s\n", k, v)
-    return referenceTableMap
+    val tempMap = referenceTableMap.toSeq.sortBy(_._1.length).reverse.toMap
+    //    for ((k, v) <- tempMap) printf("这是在主函数中key: %s, value: %s\n", k, v)
+    return tempMap
   }
 
 
-  def getBusinessCode(bc: Broadcast[scala.collection.mutable.Map[String, (String, Integer, String, String, String, Integer, Integer)]], content: String): String = {
+  def getBusinessCode(bc: Broadcast[scala.collection.immutable.Map[String, (String, Integer, String, String, String, Integer, Integer)]], content: String): String = {
     if (content == null) {
       return "\\N|\\N|\\N|\\N|\\N|\\N|\\N|\\N"
     }
@@ -97,7 +98,7 @@ object SMSAppendixTemp {
   }
 
 
-  def allTheCompletion(line: String, bc: Broadcast[scala.collection.mutable.Map[String, (String, Integer, String, String, String, Integer, Integer)]], lnc: Accumulator[Long]): String = {
+  def allTheCompletion(line: String, bc: Broadcast[scala.collection.immutable.Map[String, (String, Integer, String, String, String, Integer, Integer)]], lnc: Accumulator[Long]): String = {
     //    for ((k, v) <- bc.value) printf("这是在Executor中，也就是每个Map中key: %s, value: %s\n", k, v)
     lnc.add(1)
     val splitArray: Array[String] = line.split("[|]")
